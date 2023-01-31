@@ -49,7 +49,21 @@ class _TextFieldState extends State<TextField> {
 class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Expanded(
+      flex: 2,
+      child: Center(
+        child: Container(
+          color: const Color(0xff87cefa),
+          child: GridView.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 3.0,
+            crossAxisSpacing: 3.0,
+            children: [
+
+            ],
+          ),
+        ),
+      ),
 
     );
   }
@@ -63,3 +77,4 @@ class Button extends StatelessWidget {
     );
   }
 }
+
