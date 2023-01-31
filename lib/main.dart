@@ -77,10 +77,21 @@ class Keyboard extends StatelessWidget {
 }
 
 class Button extends StatelessWidget {
+  final _key;
+  Button(this._key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-
+      child: FlatButton(
+        onPressed: () {  },
+        child: Center(
+          child: Text(
+            _key,
+            style: TextStyle(fontSize: 46.0),
+          ),
+        ),
+      ),
     );
   }
 }
