@@ -1,6 +1,7 @@
 # simple_calculator
 
-A new Flutter project.
+It is copy of below
+https://2357developnote.blogspot.com/2020/05/flutter-calculator1.html
 
 ## Getting Started
 
