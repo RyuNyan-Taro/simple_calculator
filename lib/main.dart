@@ -28,12 +28,19 @@ class TextField extends StatefulWidget {
 
 
 class _TextFieldState extends State<TextField> {
-  String _expression = '1+1';
+  String _expression = '';
 
   void _UpdateText(String letter) {
     setState(() {
-      if(letter == '=' || letter == 'C')
+      if(letter == 'C')
         _expression = '';
+      else if (letter == '='){
+        _expression='';
+        var ans = Calculator.Execute();
+        controller.sink.add(ans);
+      }else if (letter == 'e'){
+        _expression = 'Error';
+      }
       else
         _expression += letter;
     });
@@ -58,10 +65,11 @@ class _TextFieldState extends State<TextField> {
     //any
   }
 
-  static final controller = StreamController<String>();
+  static final controller = StreamController.broadcast();
   @override
   void initState() {
     controller.stream.listen((event) => _UpdateText(event));
+    controller.stream.listen((event) => Calculator.GetKey(event));
   }
 }
 
