@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
+
 
 void main() => runApp(MyApp());
 
@@ -23,8 +25,18 @@ class TextField extends StatefulWidget {
   _TextFieldState createState() => _TextFieldState();
 }
 
+
 class _TextFieldState extends State<TextField> {
   String _expression = '1+1';
+
+  void _UpdateText(String letter) {
+    setState(() {
+      if(letter == '=' || letter == 'C')
+        _expression = '';
+      else
+        _expression += letter;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +55,12 @@ class _TextFieldState extends State<TextField> {
       ),
     );
     //any
+  }
+
+  static final controller = StreamController<String>();
+  @override
+  void initState() {
+    controller.stream.listen((event) => _UpdateText(event));
   }
 }
 
@@ -83,14 +101,20 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // ignore: deprecated_member_use
       child: FlatButton(
-        onPressed: () {  },
         child: Center(
           child: Text(
             _key,
-            style: TextStyle(fontSize: 46.0),
+            style: TextStyle(
+                fontSize: 46.0,
+                color: Colors.black54,
+            ),
           ),
         ),
+        onPressed: (){
+          _TextFieldState.controller.sink.add(_key);
+        },
       ),
     );
   }
