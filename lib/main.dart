@@ -35,7 +35,7 @@ class _TextFieldState extends State<TextField> {
       if(letter == 'C')
         _expression = '';
       else if (letter == '='){
-        _expression='';
+        _expression = '';
         var ans = Calculator.Execute();
         controller.sink.add(ans);
       }else if (letter == 'e'){
@@ -86,7 +86,7 @@ class Keyboard extends StatelessWidget {
             mainAxisSpacing: 3.0,
             crossAxisSpacing: 3.0,
             children: [
-              '7', '8', '9', '+',
+              '7', '8', '9', '÷',
               '4', '5', '6', 'x',
               '1', '2', '3', '-',
               'C', '0', '=', '+',
