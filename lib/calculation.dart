@@ -4,7 +4,7 @@ class Calculator{
   static var _number =  [];
   static var _op =  [];
 
-  static String _buffer;
+  static String _buffer = 0 as String;
 
   static void GetKey(String letter){
     // 四則演算子
@@ -26,13 +26,32 @@ class Calculator{
 
     }
   }
-  static double _result;
-  static String Execute(){
+  static double _result = 0;
+  static Object Execute(){
     _number.add(double.parse(_buffer));
 
     if (_number.length == 0)
       return 0;
 
     _result = _number[0];
+    for (int i = 0; i < _op.length; i++) {
+      if (_op[i] == '+')
+        _result += _number[i + 1];
+      else if (_op[i] == '-')
+        _result -= _number[i + 1];
+      else if (_op[i] == 'x')
+        _result *= _number[i + 1];
+      else if (_op[i] == '÷')
+        _result /= _number[i + 1];
+      else
+        return 'e';
+    }
+
+    _number.clear();
+    _op.clear();
+    _buffer = '';
+
+    var resultStr = _result.toString().split('.');
+    return resultStr[1] == '0' ? resultStr[0] : _result.toString();
   }
 }
