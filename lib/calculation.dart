@@ -34,6 +34,7 @@ class Calculator{
       return 0;
 
     _result = _number[0];
+    //todo: process1: calculate only multiple and divide
     for (int i = 0; i < _op.length; i++) {
       if (_op[i] == '+')
         _result += _number[i + 1];
@@ -46,6 +47,8 @@ class Calculator{
       else
         return 'e';
     }
+
+    //todo: process2: calculate add and subtract
 
     _number.clear();
     _op.clear();
