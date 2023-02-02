@@ -4,7 +4,7 @@ class Calculator{
   static var _number =  [];
   static var _op =  [];
 
-  static String _buffer = 0 as String;
+  static String _buffer = '';
 
   static void GetKey(String letter){
     // 四則演算子
