@@ -5,6 +5,7 @@ class Calculator{
   static var _op =  [];
 
   static String _buffer;
+
   static void GetKey(String letter){
     // 四則演算子
     if(c_op.contains(letter)){
@@ -25,10 +26,13 @@ class Calculator{
 
     }
   }
-
+  static double _result;
   static String Execute(){
-    int result;
+    _number.add(double.parse(_buffer));
 
-    return result.toString();
+    if (_number.length == 0)
+      return 0;
+
+    _result = _number[0];
   }
 }
